@@ -11,6 +11,7 @@ class Main {
        Port port = new Port();
        port.createBerth();
        port.createBerth();
+       port.createBerth();
 
        FleetOfShips fleetOfShips= new FleetOfShips();
        fleetOfShips.createShip();
@@ -19,9 +20,6 @@ class Main {
        fleetOfShips.createShip();
 
        port.workPort(fleetOfShips);
-
-
-
 
     }
 

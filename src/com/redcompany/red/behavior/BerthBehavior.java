@@ -8,6 +8,8 @@ public interface BerthBehavior {
 
     boolean sail(Ship ship);
 
+    void getShip(Ship ship);
+
 
 
 }
