@@ -1,29 +1,14 @@
 package com.redcompany.red.entity;
 
-import java.util.Random;
+public class Ship  {
 
-public class Ship implements Runnable {
+    private int load =100;
 
-    private Random random;
-    private int loadCapacity;
-
-
-    public Ship() {
-        initLoadCapacity();
-
-
+    public int getLoad() {
+        return load;
     }
 
-    @Override
-    public void run() {
-
+    public void setLoad(int load) {
+        this.load = load;
     }
-
-
-    private void initLoadCapacity() {
-        this.random = new Random();
-        this.loadCapacity = random.nextInt(11);
-    }
-
-
 }

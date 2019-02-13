@@ -1,11 +1,34 @@
 package com.redcompany.red.start;
 
-import com.redcompany.red.work.ImitationOfWork;
+import com.redcompany.red.entity.FleetOfShips;
+import com.redcompany.red.entity.Port;
 
-public class Main {
+class Main {
+    int b;
 
     public static void main(String[] args) {
-        ImitationOfWork imitationOfWork = new ImitationOfWork();
-        imitationOfWork.start();
+
+       Port port = new Port();
+       port.createBerth();
+       port.createBerth();
+
+       FleetOfShips fleetOfShips= new FleetOfShips();
+       fleetOfShips.createShip();
+       fleetOfShips.createShip();
+       fleetOfShips.createShip();
+       fleetOfShips.createShip();
+
+       port.workPort(fleetOfShips);
+
+
+
+
     }
+
+
+
+
+
+
+
 }

@@ -1,42 +1,52 @@
 package com.redcompany.red.entity;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Port {
 
-private int capacity = 1000;
-private int numberOfBerths = 3;
-private int numberOfShips;
-private Random random;
-private ArrayList<Berth> berthArrayList;
-private ArrayList<Ship> shipArrayList;
-
-private Berth berth ;
-
-    public Port() {
-        this.berthArrayList = new ArrayList<Berth>(numberOfBerths-1);
-        initBerthList();
-        this.shipArrayList = new ArrayList<Ship>();
-        initNumberOfShips();
+    private Berth berth;
+    private Ship ship;
+    private FleetOfShips fleetOfShips;
+    private ArrayList<Berth> berthArrayList = new ArrayList<Berth>();
 
 
-
-
+    public void createBerth() {
+        this.berth = new Berth();
+        addBerthtoberthArrayList(berth);
     }
 
-    private void initBerthList(){
-        for (int i = 0; i <= numberOfBerths ; i++) {
-            berthArrayList.add(new Berth());
+    private void addBerthtoberthArrayList(Berth berth) {
+        berthArrayList.add(berth);
+    }
+
+    public void workPort(FleetOfShips fleetOfShips) {
+    this.fleetOfShips = fleetOfShips;
+        while (fleetOfShips.getSizeFleetOfShips() > 0) {
+
+            st:
+            for (int i = 0; i <= berthArrayList.size(); i++) {
+
+
+                if (berthArrayList.get(i).isFree() == true) {
+                    getShipFromFleetOfShipsArrayList();
+                    this.berth = berthArrayList.get(i);
+
+                    if (berth.dock(ship) == true) {
+                        berth.sail(ship);
+                    }
+                    break st;
+
+                }
+            }
         }
     }
 
-    private void   initNumberOfShips(){
-        random = new Random();
-        numberOfShips = random.nextInt(21);
-        for (int i = 0; i <= numberOfShips; i++) {
-            shipArrayList.add(new Ship());
+    private void getShipFromFleetOfShipsArrayList() {
+        if (fleetOfShips.getSizeFleetOfShips() > 0) {
+            this.ship = fleetOfShips.getShipArrayList().get(0);
+            fleetOfShips.getShipArrayList().remove(0);
         }
     }
+
 
 }

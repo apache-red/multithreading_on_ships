@@ -1,16 +1,33 @@
 package com.redcompany.red.entity;
 
-public class Berth implements  Runnable{
+import com.redcompany.red.behavior.BerthBehavior;
 
-    private boolean isiBusy;
-
-    private int workSpeed = 1;
+public class Berth implements BerthBehavior {
 
 
+    private boolean isFree = true;
+    private int loadBerth;
 
+
+
+    public boolean isFree() {
+        return isFree;
+    }
 
     @Override
-    public void run() {
-
+    public boolean dock(Ship ship) {
+        this.isFree = false;
+        loadBerth = ship.getLoad();
+        ship.setLoad(0);
+        return true;
     }
+
+    @Override
+    public boolean sail(Ship ship) {
+        System.out.println(ship + " был разгружен портом " +Berth.this);
+        isFree = true;
+        return true;
+    }
+
+
 }
